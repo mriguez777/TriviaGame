@@ -3,7 +3,7 @@
 var question = [
     {
         prompt: "What is the name of this game?\n(a) Question game\n\(b) Name Game\n(c) Trivia game",
-        answer: "C"
+        answer: "c"
     },
     {
         prompt: "Where do babies come from?\n(a) Storks\n\(b) Birds and Bees\n(c) Amazon",
@@ -27,18 +27,26 @@ var question = [
 var wins = 0;
 var losses = 0;
 
-//here i created a "for" loop that will run through my question variable, cycling through all the questions. 
-for (var i = 0; i < question.length; i++) {
-    //now I create a variable for the users response
-    var response = window.prompt(question[i].prompt);
-    //now we need an if statement to check if the answer is correct. if so then it will add to the score variable and then alert the user correct. If it is not correct then it is automatically sent to the else statement and alert incorrect.
-    if (response == question[i].answer) {
-        wins++;
-        alert("Correct!");
-    } else {
-        losses++
-        alert("Incorrect!");
-    }
-}
+//adding button function. When button clicked on index page, game will start
+$("#start").on("click", function () {
 
-document.write()
+
+    //here i created a "for" loop that will run through my question variable, cycling through all the questions. 
+    for (var i = 0; i < question.length; i++) {
+        //now I create a variable for the users response
+        var response = window.prompt(question[i].prompt);
+        //now we need an if statement to check if the answer is correct. if so then it will add to the score variable and then alert the user correct. If it is not correct then it is automatically sent to the else statement and alert incorrect.
+        if (response == question[i].answer) {
+            wins++;
+            alert("Correct!");
+            $("#wins").html(wins);
+        } else {
+            losses++
+            alert("Incorrect!");
+            $("#losses").html(losses);
+        }
+    }
+})
+
+
+//I am missing a timer and style of the game. Also I would change the prompts to a document.write function to write the question in HTML on the index.html page. Then when the time is up it would display all the correct number of correct and incorrect answers. 
